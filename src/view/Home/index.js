@@ -3,6 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import ChildThree from "./ChildThree";
 import ChildOne from "./ChildOne";
 import ChildTwo from "./ChildTwo";
+import MobxTest from "./MobxTest";
 
 import { testApi } from "./api";
 
@@ -34,6 +35,14 @@ class Home extends React.Component {
           <Route path="/home/child_one" component={ChildOne} />
           <Route path="/home/child_two" component={ChildTwo} />
           <Route path="/home/child_three" component={ChildThree} />
+        </Switch>
+
+        <ul>
+          <div className={styles.title}>mobx测试</div>
+          <Link to="/home/mobx">mobx</Link>
+        </ul>
+        <Switch>
+          <Route path="/home/mobx" component={MobxTest} />
         </Switch>
       </>
     );
