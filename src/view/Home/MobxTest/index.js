@@ -1,8 +1,10 @@
 import React from "react";
 import { observable } from "mobx";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react/custom";
 
-// @observer
+import styles from "./index.module.less";
+
+@observer
 class MobxTest extends React.Component {
   @observable count = 0;
 
@@ -17,9 +19,9 @@ class MobxTest extends React.Component {
   render() {
     console.log(this.count);
     return (
-      <div>
-        {this.count}
+      <div className={styles.container}>
         <span onClick={this.handleAdd}>增加</span>
+        {this.count}
         <span onClick={this.handleDelete}>减少</span>
       </div>
     );
