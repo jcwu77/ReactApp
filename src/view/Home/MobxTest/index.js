@@ -1,28 +1,33 @@
 import React from "react";
-import { observable } from "mobx";
-import { observer } from "mobx-react/custom";
+import { observer, inject } from "mobx-react/custom";
 
 import styles from "./index.module.less";
-
+@inject("DemoStore")
 @observer
 class MobxTest extends React.Component {
-  @observable count = 0;
-
   handleAdd = () => {
-    this.count++;
+    const { DemoStore } = this.props;
+    DemoStore.addCount();
+    // DemoStore.setToken();
   };
 
   handleDelete = () => {
-    this.count--;
+    const { DemoStore } = this.props;
+    DemoStore.deleteCount();
+    // DemoStore.setToken(123123);
   };
 
   render() {
-    console.log(this.count);
+    const { DemoStore } = this.props;
+    const { total, count } = DemoStore;
     return (
       <div className={styles.container}>
         <span onClick={this.handleAdd}>增加</span>
-        {this.count}
+        {count}
         <span onClick={this.handleDelete}>减少</span>
+
+        <div>单价： 112</div>
+        <div>总价：{total}</div>
       </div>
     );
   }

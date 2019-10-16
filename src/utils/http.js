@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 
-const token = localStorage.getItem("token") || "";
+const token = `Bearer ${localStorage.getItem("token")}` || "";
 const server = axios.create();
 // 根据环境获取不同的baseUrl
 const origin = window.location.origin;
@@ -60,8 +60,8 @@ const axios_form = params => {
     url: params.url,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: token
-    }
+      Authorization: token,
+    },
   };
   switch (options.method) {
     case "get":
@@ -87,8 +87,8 @@ const axios_json = params => {
     method: params.method || "get",
     url: params.url,
     headers: {
-      Authorization: token
-    }
+      Authorization: token,
+    },
   };
   if (options.method === "get") {
     if (params.data) {

@@ -1,19 +1,19 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true
+    es6: true,
   },
   extends: ["react-app", "plugin:prettier/recommended"],
   globals: {
     Atomics: "readonly",
-    SharedArrayBuffer: "readonly"
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2018,
-    sourceType: "module"
+    sourceType: "module",
   },
   plugins: ["react", "prettier"],
   rules: {
@@ -25,15 +25,13 @@ module.exports = {
     // 数组方法的回调中必须使用return
     "array-callback-return": "error",
     // 复杂度阈值：2
-    complexity: ["error", 2],
+    complexity: ["warn", 20],
     // switch中必须使用default
     "default-case": "error",
-    // 函数默认参数放在最后
-    "default-param-last": "warn",
     // 必须使用===和!==
-    eqeqeq: ["error", "always"],
+    eqeqeq: ["warn", "always"],
     // for-in 中必须判断
-    "guard-for-in": "error",
+    "guard-for-in": "warn",
     // 禁止使用alert
     "no-alert": "warn",
     // 禁止使用arguments.caller和arguments.callee
@@ -48,8 +46,6 @@ module.exports = {
     "no-empty-function": "warn",
     // 结构不能为空
     "no-empty-pattern": "error",
-    // 禁止使用==或!=与 null 比较
-    "no-eq-null": "error",
     //禁止 eval
     "no-eval": "error",
     //禁止扩展原生类型
@@ -125,6 +121,6 @@ module.exports = {
     "no-undef": "error",
     "no-undefined": "error",
     "no-unused-vars": "warn",
-    "no-use-before-define": "error"
-  }
+    "no-use-before-define": "error",
+  },
 };
