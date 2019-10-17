@@ -1,4 +1,4 @@
-import { axios_json } from "../../utils/http";
+import { axios_json } from "../utils/http";
 
 export const testApi = () => {
   return axios_json({

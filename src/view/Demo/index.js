@@ -5,7 +5,7 @@ import ChildOne from "./ChildOne";
 import ChildTwo from "./ChildTwo";
 import MobxTest from "./MobxTest";
 
-import { testApi } from "./api";
+import { testApi } from "../../api/demo";
 
 import { observer, inject } from "mobx-react/custom";
 
@@ -20,43 +20,45 @@ class Demo extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const { DemoStore } = this.props;
     DemoStore.setToken(
       "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNTk2NzU4MTE2MSIsImNyZWF0ZWQiOjE1NzA2ODkyOTI0NDYsImV4cCI6MTU3MTI5NDA5Mn0.gM3ycaLPPixkq4bu0SM_wLeCw8THpno3SkQQF8V_XToRJe8TP9Ff-sjHh8eb7Ar8bk9E10GV7TQRq-Fsgva2_Q"
     );
-    const res = await testApi();
-    DemoStore.setData(res.data);
-
+    // const res = await testApi();
+    // DemoStore.setData(res.data);
+    DemoStore.getUserInfo();
     // console.log(res);
   }
 
   render() {
     const { DemoStore } = this.props;
-    const { resData } = DemoStore;
+    const { resData, pending } = DemoStore;
     return (
-      <>
-        <h1>mobile: {resData.mobile}</h1>
-        <ul>
-          <div className={styles.title}>子路由测试</div>
-          <Link to="/demo/child_one">跳转子路由1</Link>
-          <Link to="/demo/child_two">跳转子路由2</Link>
-          <Link to="/demo/child_three">跳转子路由3</Link>
-        </ul>
-        <Switch>
-          <Route path="/demo/child_one" component={ChildOne} />
-          <Route path="/demo/child_two" component={ChildTwo} />
-          <Route path="/demo/child_three" component={ChildThree} />
-        </Switch>
+      !pending && (
+        <>
+          <h1>mobile: {resData.mobile}</h1>
+          <ul>
+            <div className={styles.title}>子路由测试</div>
+            <Link to="/demo/child_one">跳转子路由1</Link>
+            <Link to="/demo/child_two">跳转子路由2</Link>
+            <Link to="/demo/child_three">跳转子路由3</Link>
+          </ul>
+          <Switch>
+            <Route path="/demo/child_one" component={ChildOne} />
+            <Route path="/demo/child_two" component={ChildTwo} />
+            <Route path="/demo/child_three" component={ChildThree} />
+          </Switch>
 
-        <ul>
-          <div className={styles.title}>mobx测试</div>
-          <Link to="/demo/mobx">mobx</Link>
-        </ul>
-        <Switch>
-          <Route path="/demo/mobx" component={MobxTest} />
-        </Switch>
-      </>
+          <ul>
+            <div className={styles.title}>mobx测试</div>
+            <Link to="/demo/mobx">mobx</Link>
+          </ul>
+          <Switch>
+            <Route path="/demo/mobx" component={MobxTest} />
+          </Switch>
+        </>
+      )
     );
   }
 }
