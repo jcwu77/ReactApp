@@ -7,12 +7,12 @@
  */
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Home from "./Home";
+import Demo from "./Demo";
 
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/home" component={Home} />
+      <Route path="/demo" component={Demo} />
     </Switch>
   );
 };

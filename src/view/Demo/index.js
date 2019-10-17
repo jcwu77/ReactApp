@@ -12,7 +12,7 @@ import { observer, inject } from "mobx-react/custom";
 import styles from "./index.module.less";
 @inject("DemoStore")
 @observer
-class Home extends React.Component {
+class Demo extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -39,26 +39,26 @@ class Home extends React.Component {
         <h1>mobile: {resData.mobile}</h1>
         <ul>
           <div className={styles.title}>子路由测试</div>
-          <Link to="/home/child_one">跳转子路由1</Link>
-          <Link to="/home/child_two">跳转子路由2</Link>
-          <Link to="/home/child_three">跳转子路由3</Link>
+          <Link to="/demo/child_one">跳转子路由1</Link>
+          <Link to="/demo/child_two">跳转子路由2</Link>
+          <Link to="/demo/child_three">跳转子路由3</Link>
         </ul>
         <Switch>
-          <Route path="/home/child_one" component={ChildOne} />
-          <Route path="/home/child_two" component={ChildTwo} />
-          <Route path="/home/child_three" component={ChildThree} />
+          <Route path="/demo/child_one" component={ChildOne} />
+          <Route path="/demo/child_two" component={ChildTwo} />
+          <Route path="/demo/child_three" component={ChildThree} />
         </Switch>
 
         <ul>
           <div className={styles.title}>mobx测试</div>
-          <Link to="/home/mobx">mobx</Link>
+          <Link to="/demo/mobx">mobx</Link>
         </ul>
         <Switch>
-          <Route path="/home/mobx" component={MobxTest} />
+          <Route path="/demo/mobx" component={MobxTest} />
         </Switch>
       </>
     );
   }
 }
 
-export default Home;
+export default Demo;
