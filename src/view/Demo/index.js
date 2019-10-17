@@ -5,8 +5,6 @@ import ChildOne from "./ChildOne";
 import ChildTwo from "./ChildTwo";
 import MobxTest from "./MobxTest";
 
-import { testApi } from "../../api/demo";
-
 import { observer, inject } from "mobx-react/custom";
 
 import styles from "./index.module.less";
@@ -25,10 +23,6 @@ class Demo extends React.Component {
     DemoStore.setToken(
       "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNTk2NzU4MTE2MSIsImNyZWF0ZWQiOjE1NzA2ODkyOTI0NDYsImV4cCI6MTU3MTI5NDA5Mn0.gM3ycaLPPixkq4bu0SM_wLeCw8THpno3SkQQF8V_XToRJe8TP9Ff-sjHh8eb7Ar8bk9E10GV7TQRq-Fsgva2_Q"
     );
-    // const res = await testApi();
-    // DemoStore.setData(res.data);
-    DemoStore.getUserInfo();
-    // console.log(res);
   }
 
   render() {

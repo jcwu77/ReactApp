@@ -5,6 +5,11 @@ import styles from "./index.module.less";
 @inject("DemoStore")
 @observer
 class MobxTest extends React.Component {
+  componentDidMount() {
+    const { DemoStore } = this.props;
+    DemoStore.getUserInfo();
+  }
+
   handleAdd = () => {
     const { DemoStore } = this.props;
     DemoStore.addCount();
@@ -14,7 +19,6 @@ class MobxTest extends React.Component {
   handleDelete = () => {
     const { DemoStore } = this.props;
     DemoStore.deleteCount();
-    // DemoStore.setToken(123123);
   };
 
   render() {

@@ -3,7 +3,11 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  extends: ["react-app", "plugin:prettier/recommended"],
+  extends: [
+    "react-app",
+    "plugin:prettier/recommended",
+    "plugin:import/warnings",
+  ],
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
@@ -15,9 +19,11 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  plugins: ["react", "prettier"],
+  plugins: ["react", "prettier", "import"],
   rules: {
     "prettier/prettier": "error",
+    // import顺序
+    "import/order": "warn",
     // 禁止出现console，除warn，error
     "no-console": ["warn", { allow: ["warn", "error"] }],
     // 禁止在循环中使用await
