@@ -1,11 +1,10 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
+import { observer, inject } from "mobx-react/custom";
 import ChildThree from "./ChildThree";
 import ChildOne from "./ChildOne";
 import ChildTwo from "./ChildTwo";
 import MobxTest from "./MobxTest";
-
-import { observer, inject } from "mobx-react/custom";
 
 import styles from "./index.module.less";
 @inject("DemoStore")
