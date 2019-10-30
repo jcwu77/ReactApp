@@ -90,7 +90,7 @@ const axios_json = params => {
       Authorization: token,
     },
   };
-  if (options.method === "get") {
+  if (params.method === "get") {
     if (params.data) {
       options.params = params.data;
     }
